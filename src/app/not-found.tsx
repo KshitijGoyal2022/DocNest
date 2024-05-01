@@ -4,7 +4,7 @@ import { HeroPattern } from "@/components/hero-pattern";
 
 export default function NotFound() {
   return (
-    <>
+    <div className="flex justify-center align-middle my-auto ">
       <HeroPattern />
       <div className="mx-auto flex h-full max-w-xl flex-col items-center justify-center py-16 text-center">
         <p className="text-sm font-semibold text-zinc-900 dark:text-white">
@@ -16,10 +16,10 @@ export default function NotFound() {
         <p className="mt-2 text-base text-zinc-600 dark:text-zinc-400">
           Sorry, we couldn’t find the page you’re looking for.
         </p>
-        <Button href="/" arrow="right" className="mt-8">
+        <Button href="/docs" arrow="right" className="mt-8">
           Back to docs
         </Button>
       </div>
-    </>
+    </div>
   )
 }
