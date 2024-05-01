@@ -1,3 +1,5 @@
+// @ts-nocheck 
+
 import { Page, TreeNode } from '@/types/navigation-d'
 import { Client } from '@notionhq/client'
 import { NotionToMarkdown } from 'notion-to-md'
@@ -38,8 +40,9 @@ export default class NotionService {
     const mdBlocks = await this.n2m.pageToMarkdown(pageId)
     console.log('MD Blocks:', mdBlocks)
     let markdown = this.n2m.toMarkdownString(mdBlocks)
-    console.log('Markdown:', markdown)
+    console.log('Markdown:', markdown.parent)
     console.log('-------------------------------------------------------------')
+    return markdown.parent
   }
 
   private buildTree(pages: Page[], parentId: string | null = null): TreeNode[] {

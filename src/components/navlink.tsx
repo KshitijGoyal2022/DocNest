@@ -17,7 +17,7 @@ export default function NavLink({
 }) {
   return (
     <Link
-      href={id}
+      href={`/docs/${id}`}
       aria-current={active ? 'page' : undefined}
       className={clsx(
         'flex items-center justify-between gap-2 py-2 pr-3 pl-4 text-sm transition-colors duration-300 ease-in-out rounded-md',

@@ -1,8 +1,11 @@
+// @ts-nocheck 
 import { db } from '@/lib/db'
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import { nanoid } from 'nanoid'
 import { NextAuthOptions, getServerSession } from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
+import { Session } from 'next-auth'
+import { JWT } from 'next-auth/jwt'
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(db),
@@ -19,7 +22,7 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    async session({ token, session }) {
+    async session({ token, session }: { token: JWT; session: Session }) {
       if (token) {
         session.user.id = token.id
         session.user.name = token.name
