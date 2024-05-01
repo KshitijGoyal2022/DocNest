@@ -18,7 +18,7 @@ export default function NavLink({
   return (
     <Link
       href={`/docs/${id}`}
-      className={`flex items-center justify-between gap-2 py-2 pr-3 pl-4 text-sm transition-colors duration-300 ease-in-out rounded-md ${isActive ? activeClass : ''}`}
+      className={`flex items-center justify-between gap-2 py-2 pr-3 pl-4 text-sm transition-colors duration-300 ease-in-out rounded-md w-full ${isActive ? activeClass : ''}`}
     >
       {icon && <span className='mr-2 flex items-center'>{icon}</span>}
       <span className='truncate flex-1'>{children}</span>

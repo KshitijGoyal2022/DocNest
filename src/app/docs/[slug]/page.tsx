@@ -11,7 +11,7 @@ export default async function DocumentationPage({
   const content = await notionService.getSinglePage(id);
 
   return (
-    <div className='prose lg:prose-xl mx-auto p-5 min-h-screen text-center'>
+    <div className='prose lg:prose-xl mx-auto p-5 min-h-screen '>
       {content ? (
         <ReactMarkdown
           components={{
