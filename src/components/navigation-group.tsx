@@ -7,18 +7,16 @@ import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 
 export default function NavigationGroup({
     node,
-    level = 0, // Base level for top-most nodes
-    className,
+    level = 0,
   }: {
     node: TreeNode;
-    level?: number; // Level to determine the indentation based on depth
-    className?: string;
+    level?: number;
   }) {
-    const [isOpen, setIsOpen] = useState(false); // State to toggle visibility
-    const paddingLeft = 5 + level * 5; // Adjust padding as needed
+    const [isOpen, setIsOpen] = useState(false); 
+    const paddingLeft = 5 + level * 5; 
 
     const toggleChildren = () => {
-        setIsOpen(!isOpen); // Toggle the visibility of children
+        setIsOpen(!isOpen); 
     };
 
     return (
@@ -26,22 +24,22 @@ export default function NavigationGroup({
         className='relative mt-2'
         style={{ paddingLeft: `${paddingLeft}px` }}
       >
-        <div className="text-xl font-semibold flex justify-between items-center">
+        <div className="text-xl font-semibold flex justify-between items-center bg-gray-100 hover:bg-gray-300 text-gray-700 hover:text-gray-900 rounded-lg" onClick={toggleChildren}>
           <NavLink id={node.id}>{node.title}</NavLink>
-          {node.children.length > 0 && (
+          {/* {node.children.length > 0 && (
             <button
               onClick={toggleChildren}
-              className="text-sm px-2 py-1 rounded-md bg-gray-200 hover:bg-gray-300"
+              className="text-sm px-2 py-1 rounded-md"
               aria-label={isOpen ? "Collapse" : "Expand"}
             >
-              {isOpen ? <FaArrowUp className='w-3 h-3'/> : <FaArrowDown className='w-3 h-3' />} {/* Display '+' or '-' based on the state */}
+              {isOpen ? <FaArrowUp className='w-3 h-3'/> : <FaArrowDown className='w-3 h-3' />}
             </button>
-          )}
+          )} */}
         </div>
         {isOpen && (
           <ul role="list">
             {node.children.map((child) => (
-              <NavigationGroup node={child} level={level + 1} key={child.id} /> // Recursive call with incremented level
+              <NavigationGroup node={child} level={level + 1} key={child.id} />
             ))}
           </ul>
         )}
