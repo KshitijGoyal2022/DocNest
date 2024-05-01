@@ -38,10 +38,7 @@ export default class NotionService {
   
   async getSinglePage(pageId: string) {
     const mdBlocks = await this.n2m.pageToMarkdown(pageId)
-    console.log('MD Blocks:', mdBlocks)
     let markdown = this.n2m.toMarkdownString(mdBlocks)
-    console.log('Markdown:', markdown.parent)
-    console.log('-------------------------------------------------------------')
     return markdown.parent
   }
 

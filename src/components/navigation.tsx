@@ -12,7 +12,6 @@ export async function Navigation(props: React.ComponentPropsWithoutRef<'nav'>) {
             <NavigationGroup
               key={node.id}
               node={node}
-              className={index === 0 ? 'md:mt-0' : ''}
             />
           ))}
         </ul>
