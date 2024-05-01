@@ -3,8 +3,6 @@ import { useState } from 'react';
 import NavLink from "./navlink";
 import { TreeNode } from '@/types/navigation-d';
 
-import { FaArrowUp, FaArrowDown } from "react-icons/fa";
-
 export default function NavigationGroup({
     node,
     level = 0,

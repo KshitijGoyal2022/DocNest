@@ -53,6 +53,7 @@ export default function HeroSection() {
             </Link>
             <Link
               href='https://www.verosoftdesign.com/'
+              target='_blank'
               className='text-sm font-semibold leading-6 text-gray-900'
             >
               Learn more <span aria-hidden='true'>→</span>
