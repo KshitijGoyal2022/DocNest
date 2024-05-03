@@ -1,12 +1,34 @@
 'use client';
-
 import Image from 'next/image';
 import { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import Link from 'next/link';
 
+import * as z from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+
+import { LoginSchema } from '@/schemas';
+
 export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>('');
+
+  const form = useForm<z.infer<typeof LoginSchema>>({
+    resolver: zodResolver(LoginSchema),
+    defaultValues:{
+      email: '',
+      password: ''
+    }
+  })
+
+  const { register, handleSubmit, formState: { errors } } = form;
+
+  const onSubmit = (values: z.infer<typeof LoginSchema>) =>{
+    console.log(values);
+  }
+
+  
 
   const loginWithGoogle = async () => {
     setIsLoading(true);
@@ -42,7 +64,7 @@ export default function Login() {
 
         <div className='mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]'>
           <div className='bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12'>
-            <form className='space-y-6' action='#' method='POST'>
+            <form className='space-y-6' action='#' method='POST' onSubmit={form.handleSubmit(onSubmit)}>
               <div>
                 <label
                   htmlFor='email'
@@ -53,12 +75,14 @@ export default function Login() {
                 <div className='mt-2'>
                   <input
                     id='email'
+                    {...register('email')}
                     name='email'
                     type='email'
+                    placeholder='glocktopus@gmail.com'
                     autoComplete='email'
-                    required
                     className='pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6'
                   />
+                  {errors.email && <p className="text-red-500 text-xs italic">{errors.email.message}</p>}
                 </div>
               </div>
 
@@ -72,12 +96,14 @@ export default function Login() {
                 <div className='mt-2'>
                   <input
                     id='password'
+                    {...register('password')}
                     name='password'
                     type='password'
+                    placeholder='********'
                     autoComplete='current-password'
-                    required
                     className='pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6'
                   />
+                  {errors.password && <p className="text-red-500 text-xs italic">{errors.password.message}</p>}
                 </div>
               </div>
 
