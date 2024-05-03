@@ -4,6 +4,11 @@ const DocumentationHomePage = () => {
           <div>
             Welcome to VSD Documentation Center
           </div>
+          <ul className="mt-5">
+            <li>What is new: (special components)</li>
+            <li>Extract this into a getting started page</li>
+
+          </ul>
         </div>
       )
 }
