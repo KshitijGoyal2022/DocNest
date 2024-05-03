@@ -171,6 +171,15 @@ export default function Login() {
                   </span>
                 </div>
               </div>
+              <p className='mt-10 text-center text-sm text-gray-500'>
+                Don't have an account?{' '}
+                <Link
+                  href='/create-account'
+                  className='font-semibold leading-6 text-sky-600 hover:text-sky-500'
+                >
+                  Sign up
+                </Link>
+              </p>
             </div>
           </div>
         </div>
