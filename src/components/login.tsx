@@ -16,19 +16,39 @@ export default function Login() {
 
   const form = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),
-    defaultValues:{
+    defaultValues: {
       email: '',
-      password: ''
+      password: '',
+    },
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = form;
+
+  const onSubmit = async (values: z.infer<typeof LoginSchema>) => {
+    try {
+      setIsLoading(true);
+
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: values.email,
+          password: values.password,
+        }),
+      });
+
+      console.log('Login success', response);
+    } catch (error: any) {
+      console.error('Login error:', error);
+      setError(error.message);
     }
-  })
-
-  const { register, handleSubmit, formState: { errors } } = form;
-
-  const onSubmit = (values: z.infer<typeof LoginSchema>) =>{
-    console.log(values);
-  }
-
-  
+  };
 
   const loginWithGoogle = async () => {
     setIsLoading(true);
@@ -64,7 +84,12 @@ export default function Login() {
 
         <div className='mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]'>
           <div className='bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12'>
-            <form className='space-y-6' action='#' method='POST' onSubmit={form.handleSubmit(onSubmit)}>
+            <form
+              className='space-y-6'
+              action='#'
+              method='POST'
+              onSubmit={form.handleSubmit(onSubmit)}
+            >
               <div>
                 <label
                   htmlFor='email'
@@ -82,7 +107,11 @@ export default function Login() {
                     autoComplete='email'
                     className='pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6'
                   />
-                  {errors.email && <p className="text-red-500 text-xs italic">{errors.email.message}</p>}
+                  {errors.email && (
+                    <p className='text-red-500 text-xs italic'>
+                      {errors.email.message}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -103,7 +132,11 @@ export default function Login() {
                     autoComplete='current-password'
                     className='pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6'
                   />
-                  {errors.password && <p className="text-red-500 text-xs italic">{errors.password.message}</p>}
+                  {errors.password && (
+                    <p className='text-red-500 text-xs italic'>
+                      {errors.password.message}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -191,9 +224,14 @@ export default function Login() {
                 </div>
 
                 <div className='flex w-full items-center justify-center gap-3 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:ring-transparent'>
-                  <Image src='/outlook.svg' alt='icon' width={20} height={20} />
+                  <Image
+                    src='/microsoft.svg'
+                    alt='icon'
+                    width={20}
+                    height={20}
+                  />
                   <span className='text-sm font-semibold leading-6'>
-                    Outlook
+                    Microsoft
                   </span>
                 </div>
               </div>
