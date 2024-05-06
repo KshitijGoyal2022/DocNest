@@ -9,10 +9,13 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 
 import { LoginSchema } from '@/schemas';
+import { useRouter } from 'next/navigation';
 
-export default function Login() {
+export default function LoginForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>('');
+
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),
@@ -44,6 +47,8 @@ export default function Login() {
       });
 
       console.log('Login success', response);
+      router.push('/docs');
+      
     } catch (error: any) {
       console.error('Login error:', error);
       setError(error.message);
