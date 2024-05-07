@@ -7,7 +7,7 @@ export async function Navigation(props: React.ComponentPropsWithoutRef<'nav'>) {
    
     return (
       <nav {...props}>
-        <ul role="list" className="list-none p-4 bg-white shadow rounded-lg">
+        <ul role="list" className="list-none p-4 bg-white shadow rounded-lg ">
           {treeData.map((node, index) => (
             <NavigationGroup
               key={node.id}
