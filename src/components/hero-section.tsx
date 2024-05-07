@@ -30,11 +30,11 @@ export default function HeroSection() {
       <div className='mx-auto max-w-7xl px-6 pb-24 pt-10 sm:pb-32 lg:flex lg:px-8 lg:py-40'>
         <div className='mx-auto max-w-2xl lg:mx-0 lg:max-w-xl lg:flex-shrink-0 lg:pt-8'>
           <div className='mt-24 sm:mt-32 lg:mt-16'>
-            <a href='#' className='inline-flex space-x-6'>
+            <div className='inline-flex space-x-6'>
               <span className='rounded-full bg-sky-600/10 px-3 py-1 text-sm font-semibold leading-6 text-sky-600 ring-1 ring-inset ring-sky-600/10'>
                 What is new
               </span>
-            </a>
+            </div>
           </div>
           <h1 className='mt-10 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl'>
             Verosoft Design Docs

@@ -31,14 +31,26 @@ const Modal = dynamic(
 )
 
     return (
-        <NotionRenderer recordMap={recordMap} components={{
-            Code,
-            Collection,
-            Equation,
-            Modal,
-            Pdf
-          }}
+        <>
+      <style jsx global>{`
+        .notion-collection-row {
+          display: none;
+        }
+        .notion-block {
+          border-bottom: none !important;
+        }
+      `}</style>
+      <NotionRenderer
+        recordMap={recordMap}
+        components={{
+          Code,
+          Collection,
+          Equation,
+          Modal,
+          Pdf,
+        }}
       />
+    </>
 
     )
 }

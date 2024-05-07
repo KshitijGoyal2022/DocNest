@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Footer } from './footer';
-import { Navigation } from './navigation';
+import { Navigation } from './navigation/navigation';
 import Header from './header';
 
 export function Layout({ children }: { children: React.ReactNode }) {
