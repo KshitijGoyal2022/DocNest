@@ -36,12 +36,10 @@ const Modal = dynamic(
         .notion-collection-row {
           display: none;
         }
-        .notion-block {
-          border-bottom: none !important;
-        }
       `}</style>
       <NotionRenderer
         recordMap={recordMap}
+        // darkMode={true}
         components={{
           Code,
           Collection,
