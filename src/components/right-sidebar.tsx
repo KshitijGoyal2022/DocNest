@@ -21,15 +21,17 @@ export default function RightSidebar({ recordMap }) {
       }
       return headings;
     };
-  
+
     const headings = extractHeadings(recordMap);
+    console.log(headings)
 
     useEffect(() => {
         const handleLinkClick = event => {
             event.preventDefault();
             const targetId = event.target.getAttribute('href').substring(1);
-            const targetElement = document.querySelector(`[data-id="${targetId}"]`);
+            console.log("Target ID:", targetId);
             setSelectedId(targetId);  // Update the selectedId state on click
+            const targetElement = document.querySelector(`[data-id="${targetId}"]`);
 
             if (targetElement) {
                 targetElement.scrollIntoView({
@@ -39,23 +41,28 @@ export default function RightSidebar({ recordMap }) {
             }
         };
 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        const anchors = document.querySelectorAll('a[href^="#"]');
+        anchors.forEach(anchor => {
             anchor.addEventListener('click', handleLinkClick);
         });
 
+        // Debug: Log the current selectedId
+        console.log("Current selectedId:", selectedId);
+
         return () => {
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchors.forEach(anchor => {
                 anchor.removeEventListener('click', handleLinkClick);
             });
         };
-    }, []); 
+    }, [selectedId]); // Include selectedId in the dependency array to update component with state changes
 
     return (
-      <div className='w-64 bg-white h-full overflow-y-auto fixed right-20 top-30 p-5'>
-        <ul className='list-none p-0 m-0'>
+      <div className='w-64 bg-white overflow-y-auto fixed right-20 top-30 p-5 border-gray-400 border-b'>
+        <span className='text-black text-sm font-medium'>On this page</span>
+        <ul className='list-none p-0 mt-3'>
           {headings.map((heading, index) => (
-            <li key={index} className='mb-2'>
-              <a href={`#${heading.id}`} className={`text-gray-400 hover:text-black text-sm ${selectedId === heading.id ? 'text-sky-500' : ''}`}>
+            <li key={index} className='mb-1'>
+              <a href={`#${heading.id}`} className={` hover:text-gray-600 text-sm font-medium ${selectedId === heading.id ? 'text-sky-600' : 'text-gray-400'}`}>
                 {heading.text}
               </a>
             </li>
@@ -63,4 +70,4 @@ export default function RightSidebar({ recordMap }) {
         </ul>
       </div>
     );
-  }
+}
