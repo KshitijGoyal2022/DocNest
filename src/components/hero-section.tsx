@@ -37,7 +37,7 @@ export default function HeroSection() {
             </div>
           </div>
           <h1 className='mt-10 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl'>
-            Verosoft Design Docs
+            Verosoft Design Documentation Hub
           </h1>
           <p className='mt-6 text-lg leading-8 text-gray-600'>
             A centralized hub for essential guides, manuals, and resources,
@@ -46,16 +46,16 @@ export default function HeroSection() {
           </p>
           <div className='mt-10 flex items-center gap-x-6'>
             <Link
-              href='/docs'
+              href='https://www.verosoftdesign.com/'
               className='rounded-md bg-sky-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600'
             >
-              Get started
+              Verosoft Design Website
             </Link>
             <Link
-              href='https://www.verosoftdesign.com/'
-              className='text-sm font-semibold leading-6 text-gray-900'
+              href='/docs'
+              className='text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100 px-3.5 py-2.5 rounded-md'
             >
-              Learn more <span aria-hidden='true'>→</span>
+              Get started <span aria-hidden='true'>→</span>
             </Link>
           </div>
         </div>
