@@ -3,7 +3,6 @@
 import { Page, TreeNode } from '@/types/navigation-d';
 import { Client } from '@notionhq/client';
 import { NotionToMarkdown } from 'notion-to-md';
-import { NotionRenderer } from '@notion-render/client';
 
 export default class NotionService {
   client: Client;
@@ -12,7 +11,6 @@ export default class NotionService {
   constructor() {
     this.client = new Client({ auth: process.env.NOTION_API_KEY });
     this.n2m = new NotionToMarkdown({ notionClient: this.client });
-    this.renderer = new NotionRenderer({ notionClient: this.client });
   }
 
   async getAllPages() {
@@ -33,35 +31,22 @@ export default class NotionService {
       return tree;
     } catch (error) {
       console.error('Error fetching pages from Notion:', error);
-      return []; // Return an empty array or handle the error as appropriate
+      return [];
     }
   }
-
-  async getSinglePage(pageId: string) {
-    const mdBlocks = await this.n2m.pageToMarkdown(pageId);
-    let markdown = this.n2m.toMarkdownString(mdBlocks);
-    return markdown.parent;
-  }
-
   async getPage(pageId: string) {
     const response = await this.client.pages.retrieve({ page_id: pageId });
     return response;
   }
-
-  async getBlocks(blockId) {
-    const response = await this.client.blocks.children.list({
-      block_id: blockId
-    });
-    return response.results;
-  };
-
   private buildTree(pages: Page[], parentId: string | null = null): TreeNode[] {
-    return pages
+    const filteredPages = pages
       .filter((page) => page.parentId === parentId)
-      .map((page) => ({
-        id: page.id,
-        title: page.title,
-        children: page.hasSubItems ? this.buildTree(pages, page.id) : [],
-      }));
+      .sort((a, b) => a.title.localeCompare(b.title)); // Sort alphabetically by title
+
+    return filteredPages.map((page) => ({
+      id: page.id,
+      title: page.title,
+      children: page.hasSubItems ? this.buildTree(pages, page.id) : [],
+    }));
   }
 }
