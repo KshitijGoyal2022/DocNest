@@ -1,8 +1,7 @@
-import HeroSection from '@/components/hero-section';
 
-const DocumentationHomePage = () => {
+export default function DocumentationHomePage() {
   return (
-    <div className='last:'>
+    <div className='h-screen'>
       <div className='bg-white px-6 py-24 sm:py-32 lg:px-8'>
         <div className='mx-auto max-w-2xl text-center'>
           <p className='text-base font-semibold leading-7 text-sky-600'>
@@ -22,4 +21,3 @@ const DocumentationHomePage = () => {
   );
 };
 
-export default DocumentationHomePage;

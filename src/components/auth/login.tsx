@@ -199,7 +199,7 @@ export default function LoginForm() {
               <div className='mt-6 grid grid-cols-2 gap-4'>
                 <div
                   onClick={loginWithGoogle}
-                  className='flex w-full items-center justify-center gap-3 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:ring-transparent'
+                  className='flex w-full items-center justify-center gap-3 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:ring-transparent hover:cursor-pointer'
                 >
                   <svg
                     className='h-5 w-5'
@@ -228,7 +228,7 @@ export default function LoginForm() {
                   </span>
                 </div>
 
-                <div className='flex w-full items-center justify-center gap-3 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:ring-transparent'>
+                <div className='flex w-full items-center justify-center gap-3 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:ring-transparent hover:cursor-pointer'>
                   <Image
                     src='/microsoft.svg'
                     alt='icon'
