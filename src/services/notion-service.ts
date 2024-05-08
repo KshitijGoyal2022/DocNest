@@ -34,14 +34,10 @@ export default class NotionService {
       return [];
     }
   }
-  async getPage(pageId: string) {
-    const response = await this.client.pages.retrieve({ page_id: pageId });
-    return response;
-  }
   private buildTree(pages: Page[], parentId: string | null = null): TreeNode[] {
     const filteredPages = pages
       .filter((page) => page.parentId === parentId)
-      .sort((a, b) => a.title.localeCompare(b.title)); // Sort alphabetically by title
+      .sort((a, b) => a.title.localeCompare(b.title)); 
 
     return filteredPages.map((page) => ({
       id: page.id,
