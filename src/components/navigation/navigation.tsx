@@ -1,5 +1,7 @@
 import NotionService from "@/services/notion-service"
 import NavigationGroup from "./navigation-group"
+import { FiMenu } from 'react-icons/fi';
+import { useState } from 'react';
 
 export async function Navigation(props: React.ComponentPropsWithoutRef<'nav'>) {
     const notionService = new NotionService()
