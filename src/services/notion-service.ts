@@ -34,6 +34,12 @@ export default class NotionService {
       return [];
     }
   }
+  async getSinglePage(pageId: string) {
+    const mdBlocks = await this.n2m.pageToMarkdown(pageId)
+    let markdown = this.n2m.toMarkdownString(mdBlocks)
+    return markdown.parent
+  }
+
   private buildTree(pages: Page[], parentId: string | null = null): TreeNode[] {
     const filteredPages = pages
       .filter((page) => page.parentId === parentId)
