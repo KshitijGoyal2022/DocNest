@@ -3,14 +3,6 @@ import NotionPage from '@/components/notion-page';
 import RightSidebar from '@/components/right-sidebar';
 import ReactMarkdown from 'react-markdown';
 import NotionService from '@/services/notion-service';
-import Image from 'next/image';
-
-interface MarkdownImageProps {
-  src?: string;
-  alt?: string;
-}
-
-
 
 export default async function DocumentationPage({
   params,
@@ -28,25 +20,6 @@ export default async function DocumentationPage({
   });
 
   const recordMap = await notion.getPage(id);
-
-  function MarkdownImage({ src, alt }: MarkdownImageProps) {
-    if (!src) {
-      return <></>; // maybe a placeholder??
-    }
-    return (
-      <Image
-        src={src}
-        alt={alt || ''}
-        width={600}
-        height={400}
-        priority
-        className='rounded-lg shadow-lg my-4 w-full'
-      />
-    );
-  }
-  
-
-  
 
 
     return (
