@@ -6,22 +6,6 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import Image from 'next/image';
 
-const CustomImage = ({ src, alt }) => {
-  console.log(src);
-
-  return (
-    <div className='rounded-xl  h-screen'>
-      <Image
-        src={src}
-        alt={alt || 'Notion image'}
-        width={30}
-        height={20}
-        layout='fill'
-        objectFit='cover'
-      />
-    </div>
-  );
-};
 
 export default function NotionPage({ recordMap }) {
   const Code = dynamic(() =>
@@ -64,8 +48,7 @@ export default function NotionPage({ recordMap }) {
           Collection,
           Equation,
           Modal,
-          Pdf,
-          nextImage: CustomImage,
+          Pdf
         }}
       />
     </div>
