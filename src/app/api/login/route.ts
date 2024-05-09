@@ -15,7 +15,6 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
-    console.log(parsedBody.data);
     const { email, password } = parsedBody.data;
 
     const user = await db.user.findFirst({
