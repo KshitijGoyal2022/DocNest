@@ -1,8 +1,6 @@
 import { NotionAPI } from 'notion-client';
 import NotionPage from '@/components/notion-page';
 import RightSidebar from '@/components/right-sidebar';
-import ReactMarkdown from 'react-markdown';
-import NotionService from '@/services/notion-service';
 
 export default async function DocumentationPage({
   params,
@@ -17,6 +15,7 @@ export default async function DocumentationPage({
   });
 
   const recordMap = await notion.getPage(id);
+  console.log('fetching page');
 
 
     return (

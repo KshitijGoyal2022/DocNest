@@ -1,12 +1,19 @@
 'use client';
 import { signOut } from 'next-auth/react';
+import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 
 export default function Header() {
   const [searchTerm, setSearchTerm] = useState('');
   return (
     <div className='border-b border-gray-200 py-5 flex justify-between'>
-      <div className='flex items-center pl-10 '>
+      <div className='flex items-center px-10 gap-x-2 md:gap-x-16'>
+        <div className='block lg:hidden'>
+          <Link href='/' aria-label='Home'>
+            <Image src='/vsd_logo.png' alt='logo' width={60} height={60} />
+          </Link>
+        </div>
         <input
           type='text'
           placeholder='Search...'

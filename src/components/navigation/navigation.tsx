@@ -5,6 +5,7 @@ import MobileNavigation from './mobile-navigation';
 export async function Navigation(props: React.ComponentPropsWithoutRef<'nav'>) {
   const notionService = new NotionService();
   const treeData = await notionService.getAllPages();
+  console.log('Fetched tree data again');
 
   return (
     <nav {...props}>
