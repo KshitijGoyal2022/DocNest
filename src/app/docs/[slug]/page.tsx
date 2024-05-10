@@ -10,10 +10,7 @@ export default async function DocumentationPage({
   params: { slug: string };
 }) {
   const id = params.slug;
-  const notionService = new NotionService();
-  const content = await notionService.getSinglePage(id);
-
-
+  
   const notion = new NotionAPI({
     activeUser: process.env.NOTION_ACTIVE_USER,
     authToken: process.env.NOTION_TOKEN_V2,
@@ -25,7 +22,7 @@ export default async function DocumentationPage({
     return (
       <div className='flex'>
         <div className='prose lg:prose-xl p-5 min-h-screen '>
-          {content ? (
+          {recordMap ? (
             <>
               <NotionPage recordMap={recordMap} />
               {/* <ReactMarkdown
