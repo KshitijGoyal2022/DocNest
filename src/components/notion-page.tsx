@@ -33,7 +33,7 @@ export default function NotionPage({ recordMap }) {
   );
 
   return (
-    <div className='max-w-[300px] lg:max-w-none'>
+    <div className='max-w-[300px] md:max-w-[550px] lg:max-w-none'>
       <style jsx global>{`
         .notion-collection-row {
           display: none;

@@ -17,9 +17,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 <Image src='/vsd_logo.png' alt='logo' width={60} height={60} />
               </Link>
             </div>
-            <Navigation className='hidden lg:mt-10 lg:block' />
+            <Navigation className='lg:mt-10 lg:block' />
+            {/* <MobileNavigation className='hidden lg:mt-10 lg:block' /> */}
           </div>
         </div>
+        
         <div className='relative flex h-full flex-col px-4 pt-14 sm:px-6 lg:px-8'>
           <main className='flex-auto'>{children}</main>
           <Footer />
