@@ -1,6 +1,5 @@
-
-import "./globals.css";
-
+import './globals.css';
+import { Providers } from './providers';
 
 export default function RootLayout({
   children,
@@ -8,8 +7,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className=''>{children}</body>
+    <html lang='en' suppressHydrationWarning>
+      <body className=''>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

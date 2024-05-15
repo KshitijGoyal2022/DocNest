@@ -23,7 +23,7 @@ export default function NavigationGroup({
   return (
     <li className='relative mt-1' style={{ paddingLeft: `${paddingLeft}px` }}>
       <div
-        className='text-xl font-semibold flex justify-between items-center hover:bg-gray-100 text-gray-700 hover:text-gray-900 rounded-lg'
+        className='text-xl font-semibold flex justify-between items-center hover:bg-gray-100 text-gray-700 hover:text-gray-900 dark:text-white dark:hover:bg-blue-500 dark:hover:text-black rounded-lg'
         onClick={toggleChildren}
       >
         <NavLink id={node.id} icon={node.children.length ? icon : null}>{node.title}</NavLink>

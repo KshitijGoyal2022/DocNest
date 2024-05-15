@@ -3,6 +3,7 @@ import { signOut } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
+import ThemeSwitch from './theme-switch';
 
 export default function Header() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -22,11 +23,14 @@ export default function Header() {
           className='text-base leading-6 w-64 md:w-96  border border-gray-300 focus:border-sky-500 focus:ring focus:ring-sky-500 focus:ring-opacity-50 rounded-lg shadow-sm pl-4 pr-3 py-2'
         />
       </div>
-      <div
-        className='mr-4 text-white bg-sky-600 hover:bg-sky-700 cursor-pointer p-2 rounded-lg'
-        onClick={() => signOut()}
-      >
-        Logout
+      <div className='flex gap-x-5'>
+        <ThemeSwitch />
+        <div
+          className='mr-4 text-white bg-sky-600 hover:bg-sky-700 cursor-pointer p-2 rounded-lg'
+          onClick={() => signOut()}
+        >
+          Logout
+        </div>
       </div>
     </div>
   );

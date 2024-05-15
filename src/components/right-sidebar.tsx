@@ -83,8 +83,8 @@ export default function RightSidebar({ recordMap }) {
   }, [headings]);
 
   return (
-    <div className='w-40 lg:w-64 bg-white overflow-y-auto fixed right-0 lg:right-20 top-30 p-5 border-gray-200 border-l hidden md:block'>
-      <span className='text-black text-sm font-medium'>On this page</span>
+    <div className='w-40 lg:w-64 overflow-y-auto fixed right-0 lg:right-20 top-30 p-5 border-gray-200 border-l hidden md:block'>
+      <span className='text-sm font-medium'>On this page</span>
       <ul className='list-none p-0 mt-3'>
         {headings.map((heading, index) => (
           <li key={index} className='mb-1'>

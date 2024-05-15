@@ -14,7 +14,7 @@ export default function NavLink({
 
   const pathname = usePathname();
   const isActive = pathname === `/docs/${id}`; 
-  const activeClass = "border-l-4 border-blue-500 bg-blue-100";
+  const activeClass = "border-l-4 border-blue-500 bg-blue-100 dark:bg-blue-900 dark:border-blue-500 text-blue-500 dark:text-blue-500";
   return (
     <Link
       href={`/docs/${id}`}
