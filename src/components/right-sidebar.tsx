@@ -1,12 +1,12 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 export default function RightSidebar({ recordMap }) {
-  const [selectedId, setSelectedId] = useState(null); // State to track selected ID
+  const [selectedId, setSelectedId] = useState(null);
+  const clickInProgress = useRef(false);
 
   const extractHeadings = (recordMap) => {
     const headings = [];
-
     if (recordMap && recordMap.block) {
       for (const blockId in recordMap.block) {
         const block = recordMap.block[blockId].value;
@@ -26,19 +26,17 @@ export default function RightSidebar({ recordMap }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      const offset = 130; // You can adjust this threshold
+      if (clickInProgress.current) return; // Prevent handling scroll during click-induced scroll
+      const offset = 130;
       const scrollPosition = window.scrollY + offset;
       let closestHeading = null;
-      let smallestDiff = Infinity; // This will track the smallest difference
-      let reachedBottom =
-        window.innerHeight + window.scrollY >= document.body.offsetHeight;
+      let smallestDiff = Infinity;
 
       headings.forEach((heading) => {
         const el = document.getElementById(heading.id);
         if (el) {
-          const elementPosition =
-            el.getBoundingClientRect().top + window.scrollY;
-          const diff = Math.abs(elementPosition - scrollPosition); // Difference from the scroll position
+          const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+          const diff = Math.abs(elementPosition - scrollPosition);
 
           if (elementPosition >= scrollPosition && diff < smallestDiff) {
             smallestDiff = diff;
@@ -46,6 +44,9 @@ export default function RightSidebar({ recordMap }) {
           }
         }
       });
+
+      const reachedBottom =
+        window.innerHeight + window.scrollY >= document.body.offsetHeight;
       if (reachedBottom) {
         closestHeading = headings[headings.length - 1]?.id;
       }
@@ -57,6 +58,7 @@ export default function RightSidebar({ recordMap }) {
       event.preventDefault();
       const targetId = event.target.getAttribute('href').substring(1);
       setSelectedId(targetId);
+      clickInProgress.current = true;
       const targetElement = document.getElementById(targetId);
 
       if (targetElement) {
@@ -64,22 +66,21 @@ export default function RightSidebar({ recordMap }) {
           behavior: 'smooth',
           block: 'start',
         });
+        setTimeout(() => {
+          clickInProgress.current = false;
+        }, 1000); // Adjust timeout duration as needed
       }
     };
 
     window.addEventListener('scroll', handleScroll);
     const anchors = document.querySelectorAll('a[href^="#"]');
-    anchors.forEach((anchor) =>
-      anchor.addEventListener('click', handleLinkClick)
-    );
+    anchors.forEach((anchor) => anchor.addEventListener('click', handleLinkClick));
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      anchors.forEach((anchor) =>
-        anchor.removeEventListener('click', handleLinkClick)
-      );
+      anchors.forEach((anchor) => anchor.removeEventListener('click', handleLinkClick));
     };
-  }, [headings]); // Include selectedId in the dependency array to update component with state changes
+  }, [headings]);
 
   return (
     <div className='w-40 lg:w-64 bg-white overflow-y-auto fixed right-0 lg:right-20 top-30 p-5 border-gray-200 border-l hidden md:block'>
@@ -89,7 +90,7 @@ export default function RightSidebar({ recordMap }) {
           <li key={index} className='mb-1'>
             <a
               href={`#${heading.id}`}
-              className={` hover:text-gray-500 text-sm font-medium ${
+              className={`hover:text-gray-500 text-sm font-medium ${
                 selectedId === heading.id ? 'text-sky-600' : 'text-gray-400'
               }`}
             >
