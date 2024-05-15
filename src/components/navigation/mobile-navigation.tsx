@@ -26,7 +26,7 @@ const MobileNavigation = ({ treeData }) => {
     <div className='fixed z-50' ref={navRef}>
       <FiMenu onClick={() => setIsMenuOpen(!isMenuOpen)} className="cursor-pointer w-6 h-6 ml-3 mt-4" />
       {isMenuOpen && (
-        <ul role='list' className='list-none p-4 bg-white shadow rounded-lg h-screen w-64'>
+        <ul role='list' className='list-none p-4 bg-gray-600 shadow rounded-lg h-screen w-64'>
           {treeData.map((node, index) => (
             <NavigationGroup key={node.id} node={node} />
           ))}

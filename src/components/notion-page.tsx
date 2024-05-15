@@ -3,11 +3,12 @@ import * as React from 'react';
 import { NotionRenderer } from 'react-notion-x';
 import 'react-notion-x/src/styles.css';
 import dynamic from 'next/dynamic';
-import Link from 'next/link';
-import Image from 'next/image';
+import useDarkMode from '@/hooks/use-dark-mode';
 
 
 export default function NotionPage({ recordMap }) {
+  const isDarkMode = useDarkMode();
+  console.log('isDarkMode', isDarkMode);
   const Code = dynamic(() =>
     import('react-notion-x/build/third-party/code').then((m) => m.Code)
   );
@@ -41,7 +42,7 @@ export default function NotionPage({ recordMap }) {
       `}</style>
       <NotionRenderer
         recordMap={recordMap}
-        // darkMode={true}
+        darkMode={isDarkMode}
         previewImages={true}
         components={{
           Code,
