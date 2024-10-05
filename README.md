@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# DocNest
 
-## Getting Started
+**DocNest** is a powerful documentation center designed for large companies, allowing them to manage and update their documentation seamlessly through Notion. With real-time syncing, any changes made in Notion are automatically reflected on the company's main website, ensuring that documentation stays current and accessible.
 
-First, run the development server:
+## Table of Contents
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Setup](#setup)
+- [License](#license)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Features
+- **Notion Integration**: Syncs your Notion documentation directly to your website in real-time.
+- **Automatic Updates**: Any changes made in Notion are instantly reflected on the company’s main website.
+- **Easy Documentation Management**: Centralized system powered by Notion for easy document management and collaboration.
+- **Customizable**: Tailor the design and styling to match your brand’s look and feel.
+- **Scalable Solution**: Handles large volumes of documents for enterprise-level organizations.
+
+## Tech Stack
+DocNest is built using the following technologies:
+- **Next.js**: React framework for building server-side rendered and static web applications.
+- **Prisma**: ORM (Object Relational Mapper) for database management.
+- **Typescript**: Ensures strong typing for better code reliability and maintainability.
+- **Tailwind CSS**: Utility-first CSS framework for quick and responsive UI design.
+- **NeonDB**: Serverless, cloud-native Postgres database for storing and querying data.
+- **Notion API**: To fetch and synchronize documents from Notion.
+
+## Setup
+To run **DocNest** locally, follow these steps:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/docnest.git
+   cd docnest
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4. Open your browser and navigate to `http://localhost:3000`.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## License
+This project is licensed under the MIT License.
